@@ -1,0 +1,50 @@
+c:\users\luis\documents\visual studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.exe.config
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.exe
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Microsoft.Kinect.dll
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Microsoft.Kinect.xml
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csprojResolveAssemblyReference.cache
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\MainWindow.g.cs
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\App.g.cs
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_MarkupCompile.cache
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_MarkupCompile.lref
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\MainWindow.baml
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.g.resources
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.Properties.Resources.resources
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csproj.GenerateResource.Cache
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.exe
+C:\Users\Luis\Documents\Visual Studio 2015\Projects\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.exe.config
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.exe
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.exe
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Microsoft.Kinect.dll
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Microsoft.Kinect.xml
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csprojResolveAssemblyReference.cache
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\MainWindow.g.cs
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\App.g.cs
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_MarkupCompile.cache
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_MarkupCompile.lref
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\MainWindow.baml
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.g.resources
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.Properties.Resources.resources
+C:\Users\Luis\Desktop\Ejemplos KV1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csproj.GenerateResource.Cache
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.exe.config
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.exe
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Microsoft.Kinect.dll
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Microsoft.Kinect.xml
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csprojAssemblyReference.cache
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\MainWindow.g.cs
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\App.g.cs
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_MarkupCompile.cache
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_MarkupCompile.lref
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\MainWindow.baml
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.g.resources
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.Properties.Resources.resources
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csproj.GenerateResource.cache
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csproj.CoreCompileInputs.cache
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csproj.CopyComplete
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.exe
+C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.pdb
