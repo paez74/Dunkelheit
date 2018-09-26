@@ -62,7 +62,7 @@ namespace Ejemplo_PlantillaSkeleton
             timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
 
             // crear el evento 
-            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Tick += new EventHandler(Growth_Tick);
             // Iniciar el evento 
             timer.IsEnabled = true;
 
@@ -96,7 +96,7 @@ namespace Ejemplo_PlantillaSkeleton
             Kinect_Config();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Growth_Tick(object sender, EventArgs e)
         {
 
             Afraid.Width = Afraid.Width * 1.1;
