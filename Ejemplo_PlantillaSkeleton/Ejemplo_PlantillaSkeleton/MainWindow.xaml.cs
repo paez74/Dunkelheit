@@ -59,7 +59,7 @@ namespace Ejemplo_PlantillaSkeleton
 
             // creo el dispatcher time 
             timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 2, 0);
+            timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
 
             // crear el evento 
             timer.Tick += new EventHandler(Timer_Tick);

@@ -48,3 +48,19 @@ C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_Pl
 C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csproj.CopyComplete
 C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.exe
 C:\Users\paez7\Desktop\Plantillas Kinect V1\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.exe.config
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.exe
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.exe
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Microsoft.Kinect.dll
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\bin\Debug\Microsoft.Kinect.xml
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csprojResolveAssemblyReference.cache
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\MainWindow.g.cs
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\App.g.cs
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_MarkupCompile.cache
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_MarkupCompile.lref
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\MainWindow.baml
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.g.resources
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.Properties.Resources.resources
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csproj.GenerateResource.Cache
