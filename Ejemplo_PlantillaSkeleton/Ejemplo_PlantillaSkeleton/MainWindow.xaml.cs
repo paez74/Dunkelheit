@@ -49,6 +49,17 @@ namespace Ejemplo_PlantillaSkeleton
 
         DispatcherTimer timer;
 
+        //	Estructura	para	almacenar	la	información	del	objeto
+        struct Objeto
+        {
+            public double dPosX;
+            public double dPosY;
+            public double dAncho;
+            public double dAlto;
+        }
+        //Objetos	que	emplean	la	aplicación
+        Objeto obRehilete, obGlobo1, obGlobo2, obGlobo3, obGlobo4;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -156,6 +167,32 @@ namespace Ejemplo_PlantillaSkeleton
                     Circulo1.Fill = Brushes.Black;      //Sí	se	encuentra
                 }
             }
+        }
+
+        private bool checarColisionFuego(Objeto rehilete, Objeto Globo)
+        {
+            if (rehilete.dPosX + rehilete.dAncho < Globo.dPosX)     //Colisión	por	la	izquierda	de	ob2
+                return false;
+            if (rehilete.dPosY + rehilete.dAlto < Globo.dPosY)      //Colisión	por	arriba	de	ob2
+                return false;
+            if (rehilete.dPosY > Globo.dPosY + Globo.dAlto)      //Colisión	por	abajo	ob2
+                return false;
+            if (rehilete.dPosX > Globo.dPosX + Globo.dAncho) //Colisión	por	la	derecha	ob2
+                return false;
+            return true;
+        }
+
+        private bool checarColisionMonstruo(Objeto rehilete, Objeto Globo)
+        {
+            if (rehilete.dPosX + rehilete.dAncho < Globo.dPosX)     //Colisión	por	la	izquierda	de	ob2
+                return false;
+            if (rehilete.dPosY + rehilete.dAlto < Globo.dPosY)      //Colisión	por	arriba	de	ob2
+                return false;
+            if (rehilete.dPosY > Globo.dPosY + Globo.dAlto)      //Colisión	por	abajo	ob2
+                return false;
+            if (rehilete.dPosX > Globo.dPosX + Globo.dAncho) //Colisión	por	la	derecha	ob2
+                return false;
+            return true;
         }
         /* ------------------------------------------------------------------------- */
 
