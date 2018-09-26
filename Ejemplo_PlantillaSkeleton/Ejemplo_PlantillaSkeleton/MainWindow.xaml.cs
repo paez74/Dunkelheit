@@ -124,9 +124,18 @@ namespace Ejemplo_PlantillaSkeleton
                 dMano_X = joint_Point.X;
                 dMano_Y = joint_Point.Y;
 
+                if (obRedFire1.colisionando == true)
+                {
+                    Fire1.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
+                    Fire1.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
+                    obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
+                    obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
+                }
                 // Modificar coordenadas del indicador que refleja el movimiento (Ellipse rojo)
                 Puntero.SetValue(Canvas.TopProperty, dMano_Y - 12.5);
                 Puntero.SetValue(Canvas.LeftProperty, dMano_X - 12.5);
+
+                
 
                 ////Puntero
                 obPuntero.dPosX = (double)Puntero.GetValue(Canvas.LeftProperty);
@@ -134,23 +143,25 @@ namespace Ejemplo_PlantillaSkeleton
                 obPuntero.dAncho = Puntero.Width;
                 obPuntero.dAlto = Puntero.Height;
 
-                // Indicar Id de la persona que es trazada
-                LID.Content = skeleton.TrackingId;
                 
 
-                if (checarColisionFuego(obPuntero, obRedFire1))
+                // Indicar Id de la persona que es trazada
+                LID.Content = skeleton.TrackingId;
+
+                Console.WriteLine("LLega aqui");
+                if (checarColisionFuego(obPuntero, obRedFire1) && obRedFire1.colisionando == false)
                 {
-                    Fire1.SetValue(Canvas.TopProperty, (double)Puntero.GetValue(Canvas.TopProperty));
-                    Fire1.SetValue(Canvas.LeftProperty, (double)Puntero.GetValue(Canvas.TopProperty));
+                    Console.WriteLine("entro");
+                   
+                    obRedFire1.colisionando = true;
                     obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
                     obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
                 }
-                else if (checarColisionFuego(obPuntero, obRedFire2))
+                else if (checarColisionFuego(obPuntero, obRedFire2) && obRedFire2.colisionando == false)
                 {
-                    Fire2.SetValue(Canvas.TopProperty, (double)Puntero.GetValue(Canvas.TopProperty));
-                    Fire2.SetValue(Canvas.LeftProperty, (double)Puntero.GetValue(Canvas.TopProperty));
-                    obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
-                    obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
+                    obRedFire2.colisionando = true;
+                    obRedFire2.dPosX = (double)Fire2.GetValue(Canvas.LeftProperty);
+                    obRedFire2.dPosY = (double)Fire2.GetValue(Canvas.TopProperty);
                 }
 
             }
@@ -225,12 +236,15 @@ namespace Ejemplo_PlantillaSkeleton
             obAfraidYellow1.tipo = 3;
             obAfraidYellow1.activo = false;
 
-            // inicio en random la location del Fuego 
-            Fire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-            Fire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+            //// inicio en random la location del Fuego 
+            //Fire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+            //Fire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
             obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
             obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
+            obRedFire1.dAlto = 106;
+            obRedFire1.dAncho = 70;
             obRedFire1.tipo = 1;
+            obRedFire1.colisionando = false;
 
 
 
@@ -274,14 +288,6 @@ namespace Ejemplo_PlantillaSkeleton
             }
             
 
-            // inicio en random la location de los globos
-            Fire1.SetValue(Canvas.LeftProperty, obRedFire1.dPosX);
-            Fire1.SetValue(Canvas.TopProperty, obRedFire1.dPosY);
-            
-
-
-            Fire2.SetValue(Canvas.LeftProperty, obRedFire2.dPosX);
-            Fire2.SetValue(Canvas.TopProperty, obRedFire2.dPosY);
             
            
 

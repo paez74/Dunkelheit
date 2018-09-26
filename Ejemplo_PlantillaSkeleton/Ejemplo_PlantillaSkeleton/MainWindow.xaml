@@ -24,7 +24,7 @@
             <Ellipse	x:Name="Circulo1"	Width="300"	Height="300" Canvas.Left="-439"	Canvas.Top="681"	Fill="Black"	/>
             <Ellipse	x:Name="Circulo2"	Width="200"	Height="200" Canvas.Left="-278"	Canvas.Top="986"	Fill="Azure"	/>
             <Ellipse	x:Name="Puntero"	Width="30"	Height="30"	Canvas.Left="220"	Canvas.Top="395"	Fill="Red"	/>
-            <Image	x:Name="Fire1"	 Width="70"	Height="70" Source="fire-new.png" RenderTransformOrigin="0.424,1.66" Canvas.Left="10" Canvas.Top="516"	/>
+            <Image	x:Name="Fire1"	 Width="70"	Height="106"   Canvas.Left="476" Canvas.Top="200"  Source="fire-new.png"	/>
             <Image	x:Name="Fire2"	 Width="70"	Height="70"	Canvas.Left="785"	Canvas.Top="444" Source="fire-new.png"	/>
             <Image	x:Name="Afraid"	 Width="100"	Height="80"	Canvas.Left="220"	Canvas.Top="40" Source="imscared.png"	/>
             <Image	x:Name="Afraidwhite"	 Width="100"	Height="80"	Canvas.Left="398"	Canvas.Top="64" Source="scared blanco (2).jpeg"	/>
