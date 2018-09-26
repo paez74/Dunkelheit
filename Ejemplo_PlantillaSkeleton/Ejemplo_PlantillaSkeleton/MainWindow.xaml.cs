@@ -57,6 +57,7 @@ namespace Ejemplo_PlantillaSkeleton
             public double dAncho;
             public double dAlto;
             public int tipo; // 1-blanco , 2-rojo , 3- amarillo; 
+            public bool activo; 
         }
 
         //	Estructura	para	almacenar	la	información	del	objeto
@@ -93,13 +94,7 @@ namespace Ejemplo_PlantillaSkeleton
             InitializeMonstersFire(); // Inicializar componentes 
             
 
-            //Calcula	la	coordenada	del	centro	del	aro
-            dXC = (double)Circulo2.GetValue(Canvas.LeftProperty) + (Circulo2.Width / 2);
-            dYC = (double)Circulo2.GetValue(Canvas.TopProperty) + (Circulo2.Height / 2);
-
-            //Calcular	el	radio	de	cada	uno	de	los	círculos
-            dRadioC1 = Circulo1.Width / 2;
-            dRadioC2 = Circulo2.Width / 2;
+            
             // Realizar configuraciones e iniciar el Kinect
 
             Kinect_Config();
@@ -108,32 +103,11 @@ namespace Ejemplo_PlantillaSkeleton
         private void Growth_Tick(object sender, EventArgs e)
         {
 
-            Afraid.Width = Afraid.Width * 1.1;
-            Afraid.Height = Afraid.Height * 1.1;
-            Afraidwhite.Width = Afraidwhite.Width * 1.1;
-            Afraidwhite.Height = Afraidwhite.Height * 1.1;
-            Afraidyellow.Width = Afraidyellow.Width * 1.1;
-            Afraidyellow.Height = Afraidyellow.Height * 1.1;
+            
+            UpdateMonsters();
         }
-
-        private bool checarDistancia()
-        {
-            //Obtiene	la	coordenada	del	centro	del	círculo	que	mueve	la	persona
-            double dX1 = (double)Puntero.GetValue(Canvas.LeftProperty) + (Puntero.Width / 2);
-            double dY1 = (double)Puntero.GetValue(Canvas.TopProperty) + (Puntero.Height / 2);
-            //Calcula	la	distancia	entre	el	centro	del	Puntero	(círculo	rojo)	y
-            //el	centro	del	aro
-            double dDistancia = Math.Sqrt(Math.Pow(dXC - dX1, 2) + Math.Pow(dYC - dY1, 2));
-            //Compara	la	distancia	calculada	con	los	radios	de	los	dos	círculos	que	forman
-            //el	aro	en	el	entendido	de	que	si	la	distancia	es	mayor	al	círculo	más	grande
-            //o	menor	al	círculo	más	pequeño,	entonces	el	círculo	rojo	
-            //se	ha	salido	del	trayecto.
-            if (dDistancia > dRadioC1 || dDistancia < dRadioC2)
-
-                return false;
-            else
-                return true;
-        }
+        
+       
         /* -- Área para el método que utiliza los datos proporcionados por Kinect -- */
         /// <summary>
         /// Método que realiza las manipulaciones necesarias sobre el Skeleton trazado
@@ -162,15 +136,7 @@ namespace Ejemplo_PlantillaSkeleton
 
                 // Indicar Id de la persona que es trazada
                 LID.Content = skeleton.TrackingId;
-                /*
-                if (checarDistancia())
-                {
-                    Circulo1.Fill = Brushes.Yellow; //No	se	encuentra
-                }
-                else
-                {
-                    Circulo1.Fill = Brushes.Black;      //Sí	se	encuentra
-                }*/
+                
 
                 if (checarColisionFuego(obPuntero, obRedFire1))
                 {
@@ -188,6 +154,7 @@ namespace Ejemplo_PlantillaSkeleton
                 }
 
             }
+           
         }
 
         private bool checarColisionFuego(Fuego puntero, Fuego fire)
@@ -233,27 +200,30 @@ namespace Ejemplo_PlantillaSkeleton
             //Inicio de localizacion de imagen
             Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
             Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-            obAfraidRed1.dAlto = (double)Afraid.GetValue(Canvas.LeftProperty);
+            obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
             obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
             obAfraidRed1.dAlto = Afraid.Height;
             obAfraidRed1.dAncho = Afraid.Width;
             obAfraidRed1.tipo = 1;
+            obAfraidRed1.activo = true; 
 
             Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
             Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-            obAfraidWhite1.dAlto = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
+            obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
             obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
             obAfraidWhite1.dAlto = Afraidwhite.Height;
             obAfraidWhite1.dAncho = Afraidwhite.Width;
             obAfraidWhite1.tipo = 2;
+            obAfraidWhite1.activo = false; 
 
             Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
             Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-            obAfraidYellow1.dAlto = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
+            obAfraidYellow1.dPosX = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
             obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(Canvas.TopProperty);
             obAfraidYellow1.dAlto = Afraidyellow.Height;
             obAfraidYellow1.dAncho = Afraidyellow.Width;
             obAfraidYellow1.tipo = 3;
+            obAfraidYellow1.activo = false;
 
             // inicio en random la location del Fuego 
             Fire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
@@ -263,6 +233,7 @@ namespace Ejemplo_PlantillaSkeleton
             obRedFire1.tipo = 1;
 
 
+
             Fire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(688, 785 - 70));
             Fire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
             obRedFire2.dPosX = (double)Fire2.GetValue(Canvas.LeftProperty);
@@ -270,30 +241,38 @@ namespace Ejemplo_PlantillaSkeleton
             obRedFire2.tipo = 1;
 
         }
-        private void Update()
+        private void UpdateMonsters()
         {
 
             Afraid.SetValue(Canvas.LeftProperty, obAfraidRed1.dPosX);
             Afraid.SetValue(Canvas.TopProperty, obAfraidRed1.dPosY);
-            obAfraidRed1.dAlto = Afraid.Height;
-            obAfraidRed1.dAncho = Afraid.Width;
+            //Afraid.SetValue(HeightProperty, obAfraidRed1.dAlto);
+
+            if (obAfraidRed1.activo)
+            {
+                Afraid.Height *= 1.1;
+                Afraid.Width *= 1.1;
+            }
+
+
+            Afraidwhite.SetValue(Canvas.LeftProperty, obAfraidWhite1.dPosX);
+            Afraidwhite.SetValue(Canvas.TopProperty, obAfraidWhite1.dPosY);
+
+            if (obAfraidWhite1.activo)
+            { 
+            Afraidwhite.Height *= 1.1;
+            Afraidwhite.Width *= 1.1; }
+           
+
+            Afraidyellow.SetValue(Canvas.LeftProperty, obAfraidYellow1.dPosX);
+            Afraidyellow.SetValue(Canvas.TopProperty, obAfraidYellow1.dPosY);
+
+            if (obAfraidYellow1.activo)
+            {
+                Afraidyellow.Height *= 1.1;
+                Afraidyellow.Width *= 1.1;
+            }
             
-
-            Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-            Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-            obAfraidWhite1.dAlto = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
-            obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
-            obAfraidWhite1.dAlto = Afraidwhite.Height;
-            obAfraidWhite1.dAncho = Afraidwhite.Width;
-            obAfraidWhite1.tipo = 2;
-
-            Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-            Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-            obAfraidYellow1.dAlto = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
-            obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(Canvas.TopProperty);
-            obAfraidYellow1.dAlto = Afraidyellow.Height;
-            obAfraidYellow1.dAncho = Afraidyellow.Width;
-            obAfraidYellow1.tipo = 3;
 
             // inicio en random la location de los globos
             Fire1.SetValue(Canvas.LeftProperty, obRedFire1.dPosX);
@@ -301,13 +280,10 @@ namespace Ejemplo_PlantillaSkeleton
             
 
 
-            Fire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(688, 785 - 70));
-            Fire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
-            obRedFire2.dPosX = (double)Fire2.GetValue(Canvas.LeftProperty);
-            obRedFire2.dPosY = (double)Fire2.GetValue(Canvas.TopProperty);
-            obRedFire2.tipo = 1;
-
-
+            Fire2.SetValue(Canvas.LeftProperty, obRedFire2.dPosX);
+            Fire2.SetValue(Canvas.TopProperty, obRedFire2.dPosY);
+            
+           
 
 
         }
