@@ -26,7 +26,7 @@
             <Ellipse	x:Name="Puntero"	Width="30"	Height="30"	Canvas.Left="220"	Canvas.Top="395"	Fill="Red"	/>
             <Image	x:Name="Fire1"	 Width="70"	Height="106"   Canvas.Left="476" Canvas.Top="200"  Source="fire-new.png"	/>
             <Image	x:Name="Fire2"	 Width="70"	Height="70"	Canvas.Left="785"	Canvas.Top="444" Source="fire-new.png"	/>
-            <Image	x:Name="Afraid"	 Width="100"	Height="80"	Canvas.Left="220"	Canvas.Top="40" Source="imscared.png"	/>
+            <Image	x:Name="Afraid"	 Width="100"	Height="80"	Canvas.Left="340"	Canvas.Top="120" Source="imscared.png"	/>
             <Image	x:Name="Afraidwhite"	 Width="100"	Height="80"	Canvas.Left="398"	Canvas.Top="64" Source="scared blanco (2).jpeg"	/>
             <Image	x:Name="Afraidyellow"	 Width="100"	Height="80"	Canvas.Left="286"	Canvas.Top="200" Source="scared dorado.jpg"	/>
         </Canvas>

@@ -105,6 +105,12 @@ namespace Ejemplo_PlantillaSkeleton
 
             
             UpdateMonsters();
+            if (checarColisionMonstruo(obRedFire1, obAfraidRed1))
+            {
+                Afraid.Height = 70;
+                Afraid.Width = 70;
+                
+            }
         }
         
        
@@ -164,6 +170,8 @@ namespace Ejemplo_PlantillaSkeleton
                     obRedFire2.dPosY = (double)Fire2.GetValue(Canvas.TopProperty);
                 }
 
+                
+
             }
            
         }
@@ -183,25 +191,15 @@ namespace Ejemplo_PlantillaSkeleton
 
         private bool checarColisionMonstruo(Fuego fuego, Monstruos monstruo)
         {
-            if (fuego.dPosX + fuego.dAncho < monstruo.dPosX)     //Colisión	por	la	izquierda	de	ob2
+            if (monstruo.dPosX + monstruo.dAncho < fuego.dPosX)     //Colisión	por	la	izquierda	de	ob2
                 return false;
-            if (fuego.dPosY + fuego.dAlto < monstruo.dPosY)      //Colisión	por	arriba	de	ob2
+            if (monstruo.dPosY + monstruo.dAlto < fuego.dPosY)      //Colisión	por	arriba	de	ob2
                 return false;
-            if (fuego.dPosY > monstruo.dPosY + monstruo.dAlto)      //Colisión	por	abajo	ob2
+            if (monstruo.dPosY > fuego.dPosY + fuego.dAlto)      //Colisión	por	abajo	ob2
                 return false;
-            if (fuego.dPosX > monstruo.dPosX + monstruo.dAncho) //Colisión	por	la	derecha	ob2
+            if (monstruo.dPosX > fuego.dPosX + fuego.dAncho) //Colisión	por	la	derecha	ob2
                 return false;
 
-            if (fuego.tipo == monstruo.tipo || fuego.tipo == 3) { 
-            monstruo.dAlto = 70;
-            monstruo.dAncho = 70;
-            monstruo.dPosX = -1000;
-            monstruo.dPosY = -1000;
-
-            fuego.dPosX = -1000;
-            fuego.dPosY = -1000;
-
-           }
             return true;
         }
         private void InitializeMonstersFire()
@@ -209,8 +207,8 @@ namespace Ejemplo_PlantillaSkeleton
             Random rnd = new Random();
 
             //Inicio de localizacion de imagen
-            Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-            Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+           // Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+           // Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
             obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
             obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
             obAfraidRed1.dAlto = Afraid.Height;
@@ -241,8 +239,8 @@ namespace Ejemplo_PlantillaSkeleton
             //Fire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
             obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
             obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
-            obRedFire1.dAlto = 106;
-            obRedFire1.dAncho = 70;
+            obRedFire1.dAlto = Fire1.Height;
+            obRedFire1.dAncho = Fire1.Width;
             obRedFire1.tipo = 1;
             obRedFire1.colisionando = false;
 
@@ -266,6 +264,10 @@ namespace Ejemplo_PlantillaSkeleton
             {
                 Afraid.Height *= 1.1;
                 Afraid.Width *= 1.1;
+                obAfraidRed1.dAlto = Afraid.Height;
+                obAfraidRed1.dAncho = Afraid.Width;
+                obAfraidRed1.dPosX = (double)Afraid.GetValue(LeftProperty);
+                obAfraidRed1.dPosY = (double)Afraid.GetValue(TopProperty);
             }
 
 
