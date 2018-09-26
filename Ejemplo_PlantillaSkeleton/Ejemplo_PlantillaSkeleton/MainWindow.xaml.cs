@@ -68,6 +68,15 @@ namespace Ejemplo_PlantillaSkeleton
 
 
             Random rnd = new Random();
+
+            //Inicio de localizacion de imagen
+            Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+            Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+            Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+            Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+
             // inicio en random la location de los globos
             Fire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
             Fire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
@@ -92,7 +101,10 @@ namespace Ejemplo_PlantillaSkeleton
 
             Afraid.Width = Afraid.Width * 1.1;
             Afraid.Height = Afraid.Height * 1.1;
-
+            Afraidwhite.Width = Afraidwhite.Width * 1.1;
+            Afraidwhite.Height = Afraidwhite.Height * 1.1;
+            Afraidyellow.Width = Afraidyellow.Width * 1.1;
+            Afraidyellow.Height = Afraidyellow.Height * 1.1;
         }
 
         private bool checarDistancia()
