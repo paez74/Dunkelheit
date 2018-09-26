@@ -58,7 +58,8 @@ namespace Ejemplo_PlantillaSkeleton
             public double dAlto;
         }
         //Objetos	que	emplean	la	aplicación
-        Objeto obRehilete, obGlobo1, obGlobo2, obGlobo3, obGlobo4;
+        Objeto  obRedFire1, obRedFire2, obAfraidRed1, obAfraidWhite1,obAfraidYellow1;
+        Objeto obBlueFire1, obBlueFire2, obGoldFire1, obGoldFire2, obAfraidRed2, obAfraidWhite2, obAfraidYellow2;
 
         public MainWindow()
         {
@@ -182,16 +183,25 @@ namespace Ejemplo_PlantillaSkeleton
             return true;
         }
 
-        private bool checarColisionMonstruo(Objeto rehilete, Objeto Globo)
+        private bool checarColisionMonstruo(Objeto fuego, Objeto monstruo)
         {
-            if (rehilete.dPosX + rehilete.dAncho < Globo.dPosX)     //Colisión	por	la	izquierda	de	ob2
+            if (fuego.dPosX + fuego.dAncho < monstruo.dPosX)     //Colisión	por	la	izquierda	de	ob2
                 return false;
-            if (rehilete.dPosY + rehilete.dAlto < Globo.dPosY)      //Colisión	por	arriba	de	ob2
+            if (fuego.dPosY + fuego.dAlto < monstruo.dPosY)      //Colisión	por	arriba	de	ob2
                 return false;
-            if (rehilete.dPosY > Globo.dPosY + Globo.dAlto)      //Colisión	por	abajo	ob2
+            if (fuego.dPosY > monstruo.dPosY + monstruo.dAlto)      //Colisión	por	abajo	ob2
                 return false;
-            if (rehilete.dPosX > Globo.dPosX + Globo.dAncho) //Colisión	por	la	derecha	ob2
+            if (fuego.dPosX > monstruo.dPosX + monstruo.dAncho) //Colisión	por	la	derecha	ob2
                 return false;
+
+            monstruo.dAlto = 70;
+            monstruo.dAncho = 70;
+            monstruo.dPosX = -1000;
+            monstruo.dPosY = -1000;
+
+            fuego.dPosX = -1000;
+            fuego.dPosY = -1000;
+
             return true;
         }
         /* ------------------------------------------------------------------------- */
