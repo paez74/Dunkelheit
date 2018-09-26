@@ -50,16 +50,28 @@ namespace Ejemplo_PlantillaSkeleton
         DispatcherTimer timer;
 
         //	Estructura	para	almacenar	la	información	del	objeto
-        struct Objeto
+        struct Monstruos
         {
             public double dPosX;
             public double dPosY;
             public double dAncho;
             public double dAlto;
+            public int tipo; // 1-blanco , 2-rojo , 3- amarillo; 
+        }
+
+        //	Estructura	para	almacenar	la	información	del	objeto
+        struct Fuego
+        {
+            public double dPosX;
+            public double dPosY;
+            public double dAncho;
+            public double dAlto;
+            public bool colisionando; // con el pointer 
+            public int tipo;  // 1-rojo , 2-azul , 3-dorado 
         }
         //Objetos	que	emplean	la	aplicación
-        Objeto  obRedFire1, obRedFire2, obAfraidRed1, obAfraidWhite1,obAfraidYellow1;
-        Objeto obBlueFire1, obBlueFire2, obGoldFire1, obGoldFire2, obAfraidRed2, obAfraidWhite2, obAfraidYellow2;
+        Fuego obRedFire1, obRedFire2, obBlueFire1, obBlueFire2, obGoldFire1, obGoldFire2,obPuntero;
+        Monstruos  obAfraidRed1, obAfraidWhite1,obAfraidYellow1, obAfraidRed2, obAfraidWhite2, obAfraidYellow2;
 
         public MainWindow()
         {
@@ -78,23 +90,8 @@ namespace Ejemplo_PlantillaSkeleton
             // Iniciar el evento 
             timer.IsEnabled = true;
 
-
-            Random rnd = new Random();
-
-            //Inicio de localizacion de imagen
-            Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-            Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-            Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-            Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-            Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-            Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-
-            // inicio en random la location de los globos
-            Fire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-            Fire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
-
-            Fire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(688, 785 - 70));
-            Fire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+            InitializeMonstersFire(); // Inicializar componentes 
+            
 
             //Calcula	la	coordenada	del	centro	del	aro
             dXC = (double)Circulo2.GetValue(Canvas.LeftProperty) + (Circulo2.Width / 2);
@@ -157,8 +154,15 @@ namespace Ejemplo_PlantillaSkeleton
                 Puntero.SetValue(Canvas.TopProperty, dMano_Y - 12.5);
                 Puntero.SetValue(Canvas.LeftProperty, dMano_X - 12.5);
 
+                ////Puntero
+                obPuntero.dPosX = (double)Puntero.GetValue(Canvas.LeftProperty);
+                obPuntero.dPosY = (double)Puntero.GetValue(Canvas.TopProperty);
+                obPuntero.dAncho = Puntero.Width;
+                obPuntero.dAlto = Puntero.Height;
+
                 // Indicar Id de la persona que es trazada
                 LID.Content = skeleton.TrackingId;
+                /*
                 if (checarDistancia())
                 {
                     Circulo1.Fill = Brushes.Yellow; //No	se	encuentra
@@ -166,24 +170,40 @@ namespace Ejemplo_PlantillaSkeleton
                 else
                 {
                     Circulo1.Fill = Brushes.Black;      //Sí	se	encuentra
+                }*/
+
+                if (checarColisionFuego(obPuntero, obRedFire1))
+                {
+                    Fire1.SetValue(Canvas.TopProperty, (double)Puntero.GetValue(Canvas.TopProperty));
+                    Fire1.SetValue(Canvas.LeftProperty, (double)Puntero.GetValue(Canvas.TopProperty));
+                    obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
+                    obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
                 }
+                else if (checarColisionFuego(obPuntero, obRedFire2))
+                {
+                    Fire2.SetValue(Canvas.TopProperty, (double)Puntero.GetValue(Canvas.TopProperty));
+                    Fire2.SetValue(Canvas.LeftProperty, (double)Puntero.GetValue(Canvas.TopProperty));
+                    obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
+                    obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
+                }
+
             }
         }
 
-        private bool checarColisionFuego(Objeto rehilete, Objeto Globo)
+        private bool checarColisionFuego(Fuego puntero, Fuego fire)
         {
-            if (rehilete.dPosX + rehilete.dAncho < Globo.dPosX)     //Colisión	por	la	izquierda	de	ob2
+            if (puntero.dPosX + puntero.dAncho < fire.dPosX)     //Colisión	por	la	izquierda	de	ob2
                 return false;
-            if (rehilete.dPosY + rehilete.dAlto < Globo.dPosY)      //Colisión	por	arriba	de	ob2
+            if (puntero.dPosY + puntero.dAlto < fire.dPosY)      //Colisión	por	arriba	de	ob2
                 return false;
-            if (rehilete.dPosY > Globo.dPosY + Globo.dAlto)      //Colisión	por	abajo	ob2
+            if (puntero.dPosY > fire.dPosY + fire.dAlto)      //Colisión	por	abajo	ob2
                 return false;
-            if (rehilete.dPosX > Globo.dPosX + Globo.dAncho) //Colisión	por	la	derecha	ob2
+            if (puntero.dPosX > fire.dPosX + fire.dAncho) //Colisión	por	la	derecha	ob2
                 return false;
             return true;
         }
 
-        private bool checarColisionMonstruo(Objeto fuego, Objeto monstruo)
+        private bool checarColisionMonstruo(Fuego fuego, Monstruos monstruo)
         {
             if (fuego.dPosX + fuego.dAncho < monstruo.dPosX)     //Colisión	por	la	izquierda	de	ob2
                 return false;
@@ -194,6 +214,7 @@ namespace Ejemplo_PlantillaSkeleton
             if (fuego.dPosX > monstruo.dPosX + monstruo.dAncho) //Colisión	por	la	derecha	ob2
                 return false;
 
+            if (fuego.tipo == monstruo.tipo || fuego.tipo == 3) { 
             monstruo.dAlto = 70;
             monstruo.dAncho = 70;
             monstruo.dPosX = -1000;
@@ -202,7 +223,93 @@ namespace Ejemplo_PlantillaSkeleton
             fuego.dPosX = -1000;
             fuego.dPosY = -1000;
 
+           }
             return true;
+        }
+        private void InitializeMonstersFire()
+        {
+            Random rnd = new Random();
+
+            //Inicio de localizacion de imagen
+            Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+            Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            obAfraidRed1.dAlto = (double)Afraid.GetValue(Canvas.LeftProperty);
+            obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
+            obAfraidRed1.dAlto = Afraid.Height;
+            obAfraidRed1.dAncho = Afraid.Width;
+            obAfraidRed1.tipo = 1;
+
+            Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+            Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            obAfraidWhite1.dAlto = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
+            obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
+            obAfraidWhite1.dAlto = Afraidwhite.Height;
+            obAfraidWhite1.dAncho = Afraidwhite.Width;
+            obAfraidWhite1.tipo = 2;
+
+            Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+            Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            obAfraidYellow1.dAlto = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
+            obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(Canvas.TopProperty);
+            obAfraidYellow1.dAlto = Afraidyellow.Height;
+            obAfraidYellow1.dAncho = Afraidyellow.Width;
+            obAfraidYellow1.tipo = 3;
+
+            // inicio en random la location del Fuego 
+            Fire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+            Fire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+            obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
+            obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
+            obRedFire1.tipo = 1;
+
+
+            Fire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(688, 785 - 70));
+            Fire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+            obRedFire2.dPosX = (double)Fire2.GetValue(Canvas.LeftProperty);
+            obRedFire2.dPosY = (double)Fire2.GetValue(Canvas.TopProperty);
+            obRedFire2.tipo = 1;
+
+        }
+        private void Update()
+        {
+
+            Afraid.SetValue(Canvas.LeftProperty, obAfraidRed1.dPosX);
+            Afraid.SetValue(Canvas.TopProperty, obAfraidRed1.dPosY);
+            obAfraidRed1.dAlto = Afraid.Height;
+            obAfraidRed1.dAncho = Afraid.Width;
+            
+
+            Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+            Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            obAfraidWhite1.dAlto = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
+            obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
+            obAfraidWhite1.dAlto = Afraidwhite.Height;
+            obAfraidWhite1.dAncho = Afraidwhite.Width;
+            obAfraidWhite1.tipo = 2;
+
+            Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+            Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            obAfraidYellow1.dAlto = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
+            obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(Canvas.TopProperty);
+            obAfraidYellow1.dAlto = Afraidyellow.Height;
+            obAfraidYellow1.dAncho = Afraidyellow.Width;
+            obAfraidYellow1.tipo = 3;
+
+            // inicio en random la location de los globos
+            Fire1.SetValue(Canvas.LeftProperty, obRedFire1.dPosX);
+            Fire1.SetValue(Canvas.TopProperty, obRedFire1.dPosY);
+            
+
+
+            Fire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(688, 785 - 70));
+            Fire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+            obRedFire2.dPosX = (double)Fire2.GetValue(Canvas.LeftProperty);
+            obRedFire2.dPosY = (double)Fire2.GetValue(Canvas.TopProperty);
+            obRedFire2.tipo = 1;
+
+
+
+
         }
         /* ------------------------------------------------------------------------- */
 
