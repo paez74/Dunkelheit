@@ -73,6 +73,8 @@ namespace Ejemplo_PlantillaSkeleton
         //Objetos	que	emplean	la	aplicación
         Fuego obRedFire1, obRedFire2, obBlueFire1, obBlueFire2, obGoldFire1, obGoldFire2,obPuntero;
         Monstruos  obAfraidRed1, obAfraidWhite1,obAfraidYellow1, obAfraidRed2, obAfraidWhite2, obAfraidYellow2;
+        Random rnd = new Random();
+        int monster = 1;
 
         public MainWindow()
         {
@@ -102,14 +104,97 @@ namespace Ejemplo_PlantillaSkeleton
 
         private void Growth_Tick(object sender, EventArgs e)
         {
-
             
+
+           
+
             UpdateMonsters();
             if (checarColisionMonstruo(obRedFire1, obAfraidRed1))
             {
                 Afraid.Height = 70;
                 Afraid.Width = 70;
                 
+            }
+
+
+
+            switch (monster)
+            {
+                case 1:
+                    if (obAfraidRed1.activo != true)
+                    {
+                        obAfraidRed1.activo = true;
+                        Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                        Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                        obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
+                        obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
+                        Afraid.Visibility = Visibility.Visible;
+
+                    }
+                    monster++;
+                    break;
+                case 2:
+                    if (obAfraidRed2.activo != true)
+                    {
+                        obAfraidRed2.activo = true;
+                        //Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                        //Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                        obAfraidRed2.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
+                        obAfraidRed2.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
+                        //Afraid.Visibility = Visibility.Visible;
+
+                    }
+                    monster++;
+                    break;
+                case 3:
+                    if (obAfraidWhite1.activo != true)
+                    {
+                        obAfraidWhite1.activo = true;
+                        Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                        Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                        obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
+                        obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
+                        Afraidwhite.Visibility = Visibility.Visible;
+
+                    }
+                    monster++;
+                    break;
+                case 4:
+                    if (obAfraidWhite2.activo != true)
+                    {
+                        //obAfraidWhite2.activo = true;
+                        ////Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                        ////Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                        //obAfraidWhite2.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
+                        //obAfraidWhite2.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
+                    }
+                    monster++;
+                    break;
+                case 5:
+                    if (obAfraidYellow1.activo != true)
+                    {
+                        obAfraidYellow1.activo = true;
+                        Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                        Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                        obAfraidYellow1.dPosX = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
+                        obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(Canvas.TopProperty);
+                        Afraidyellow.Visibility = Visibility.Visible;
+
+                    }
+                    monster++;
+                    break;
+                case 6:
+                    if (obAfraidYellow2.activo != true)
+                    {
+                    //    obAfraidYellow2.activo = true;
+                    //    //Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                    //    //Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                    //    obAfraidYellow2.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
+                    //    obAfraidYellow2.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
+                    }
+                    monster = rnd.Next(1, 5);
+                    break; 
+
             }
         }
         
@@ -206,33 +291,31 @@ namespace Ejemplo_PlantillaSkeleton
         {
             Random rnd = new Random();
 
-            //Inicio de localizacion de imagen
-           // Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-           // Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            //Inicio las imagenes
             obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
             obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
             obAfraidRed1.dAlto = Afraid.Height;
             obAfraidRed1.dAncho = Afraid.Width;
             obAfraidRed1.tipo = 1;
-            obAfraidRed1.activo = true; 
+            obAfraidRed1.activo = false;
+            Afraid.Visibility = Visibility.Collapsed;
 
-            Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-            Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+           
             obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
             obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
             obAfraidWhite1.dAlto = Afraidwhite.Height;
             obAfraidWhite1.dAncho = Afraidwhite.Width;
             obAfraidWhite1.tipo = 2;
-            obAfraidWhite1.activo = false; 
-
-            Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-            Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+            obAfraidWhite1.activo = false;
+            Afraidwhite.Visibility = Visibility.Collapsed;
+            
             obAfraidYellow1.dPosX = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
             obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(Canvas.TopProperty);
             obAfraidYellow1.dAlto = Afraidyellow.Height;
             obAfraidYellow1.dAncho = Afraidyellow.Width;
             obAfraidYellow1.tipo = 3;
             obAfraidYellow1.activo = false;
+            Afraidyellow.Visibility = Visibility.Collapsed;
 
             //// inicio en random la location del Fuego 
             //Fire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
@@ -271,22 +354,33 @@ namespace Ejemplo_PlantillaSkeleton
             }
 
 
-            Afraidwhite.SetValue(Canvas.LeftProperty, obAfraidWhite1.dPosX);
-            Afraidwhite.SetValue(Canvas.TopProperty, obAfraidWhite1.dPosY);
+            //Afraidwhite.SetValue(Canvas.LeftProperty, obAfraidWhite1.dPosX);
+            //Afraidwhite.SetValue(Canvas.TopProperty, obAfraidWhite1.dPosY);
 
             if (obAfraidWhite1.activo)
             { 
             Afraidwhite.Height *= 1.1;
-            Afraidwhite.Width *= 1.1; }
+            Afraidwhite.Width *= 1.1;
+
+                obAfraidWhite1.dAlto = Afraidwhite.Height;
+                obAfraidWhite1.dAncho = Afraidwhite.Width;
+                obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(LeftProperty);
+                obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(TopProperty);
+            }
            
 
-            Afraidyellow.SetValue(Canvas.LeftProperty, obAfraidYellow1.dPosX);
-            Afraidyellow.SetValue(Canvas.TopProperty, obAfraidYellow1.dPosY);
+            Afraidwhite.SetValue(Canvas.LeftProperty, obAfraidYellow1.dPosX);
+            Afraid.SetValue(Canvas.TopProperty, obAfraidYellow1.dPosY);
 
             if (obAfraidYellow1.activo)
             {
                 Afraidyellow.Height *= 1.1;
                 Afraidyellow.Width *= 1.1;
+                obAfraidYellow1.dAlto = Afraidyellow.Height;
+                obAfraidYellow1.dAncho = Afraidyellow.Width;
+                obAfraidYellow1.dPosX = (double)Afraidyellow.GetValue(LeftProperty);
+                obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(TopProperty);
+                
             }
             
 
