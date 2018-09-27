@@ -26,6 +26,7 @@
             <Image	x:Name="RedFire1"	 Width="43"	Height="73"   Canvas.Left="46" Canvas.Top="428"  Source="fire-new.png"	/>
             <Image	x:Name="Afraid"	 Width="100"	Height="80"	Canvas.Left="340"	Canvas.Top="120" Source="imscared.png"	/>
             <Image	x:Name="Afraidwhite"	 Width="100"	Height="80"	Canvas.Left="398"	Canvas.Top="64" Source="scared blanco (2).jpeg"	/>
+            <Image	x:Name="Afraidwhite2"	 Width="100"	Height="80"	Canvas.Left="258"	Canvas.Top="64" Source="scared blanco (2).jpeg"	/>
             <Image	x:Name="Afraidyellow"	 Width="100"	Height="80"	Canvas.Left="286"	Canvas.Top="200" Source="scared dorado.jpg"	/>
             <Image	x:Name="RedFire2"	 Width="43"	Height="73"   Canvas.Left="619" Canvas.Top="428"  Source="fire-new.png" RenderTransformOrigin="2.093,0.315"	/>
             <Image	x:Name="BlueFire1"	 Width="43"	Height="73"   Canvas.Left="46" Canvas.Top="64"  Source="blue fire.jpg"	/>

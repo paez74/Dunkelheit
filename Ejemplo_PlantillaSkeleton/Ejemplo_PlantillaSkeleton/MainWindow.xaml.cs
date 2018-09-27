@@ -74,13 +74,16 @@ namespace Ejemplo_PlantillaSkeleton
         Monstruos  obAfraidRed1, obAfraidWhite1,obAfraidYellow1, obAfraidRed2, obAfraidWhite2, obAfraidYellow2;
         Random rnd = new Random();
         int monster = 1;
-        SoundPlayer background; 
+        SoundPlayer monsterScream; 
+    
         public MainWindow()
         {
             InitializeComponent();
 
-            background = new SoundPlayer(@"C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Sounds\Faint.wav");
-            background.PlayLooping();
+            
+            monsterScream = new SoundPlayer(@"C:\Users\paez7\Desktop\Dunkelheit\Sounds\Monster.wav");
+
+          
     
             // Enfocar el Canvas
             MainCanvas.Focusable = true;
@@ -88,7 +91,7 @@ namespace Ejemplo_PlantillaSkeleton
 
             // creo el dispatcher time 
             timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            timer.Interval = new TimeSpan(0, 0, 0, 2, 0);
 
             // crear el evento 
             timer.Tick += new EventHandler(Growth_Tick);
@@ -113,6 +116,7 @@ namespace Ejemplo_PlantillaSkeleton
             UpdateMonsters();
             if (checarColisionMonstruo(obRedFire1, obAfraidRed1))
             {
+                
                 Afraid.Height = 70;
                 Afraid.Width = 70;
                 obAfraidRed1.dAlto = 70;
@@ -133,6 +137,29 @@ namespace Ejemplo_PlantillaSkeleton
 
 
             }
+            else if (checarColisionMonstruo(obRedFire2, obAfraidRed1))
+            {
+                
+                Afraid.Height = 70;
+                Afraid.Width = 70;
+                obAfraidRed1.dAlto = 70;
+                obAfraidRed1.dAncho = 70;
+                Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
+                obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
+
+                obAfraidRed1.activo = false;
+                Afraid.Visibility = Visibility.Hidden;
+
+                RedFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+
+                RedFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+                obRedFire2.dPosX = (double)RedFire2.GetValue(Canvas.LeftProperty);
+                obRedFire2.dPosY = (double)RedFire2.GetValue(Canvas.TopProperty);
+
+
+            }
             else if (checarColisionMonstruo(obBlueFire1, obAfraidWhite1))
             {
                 Afraidwhite.Height = 70;
@@ -144,6 +171,104 @@ namespace Ejemplo_PlantillaSkeleton
                 Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                 obAfraidWhite1.activo = false;
                 Afraidwhite.Visibility = Visibility.Hidden;
+
+                BlueFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+
+                BlueFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+                obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
+                obBlueFire1.dPosY = (double)BlueFire1.GetValue(Canvas.TopProperty);
+            }
+            else if (checarColisionMonstruo(obBlueFire2, obAfraidWhite1))
+            {
+                Afraidwhite.Height = 70;
+                Afraidwhite.Width = 70;
+                obAfraidWhite1.dAlto = 70;
+                obAfraidWhite1.dAncho = 70;
+
+                Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                obAfraidWhite1.activo = false;
+                Afraidwhite.Visibility = Visibility.Hidden;
+
+                BlueFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+
+                BlueFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+                obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
+                obBlueFire2.dPosY = (double)BlueFire2.GetValue(Canvas.TopProperty);
+            }
+            else if (checarColisionMonstruo(obBlueFire1, obAfraidWhite1))
+            {
+                Afraidwhite.Height = 70;
+                Afraidwhite.Width = 70;
+                obAfraidWhite1.dAlto = 70;
+                obAfraidWhite1.dAncho = 70;
+
+                Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                obAfraidWhite1.activo = false;
+                Afraidwhite.Visibility = Visibility.Hidden;
+
+                BlueFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+
+                BlueFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+                obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
+                obBlueFire1.dPosY = (double)BlueFire1.GetValue(Canvas.TopProperty);
+            }
+            else if (checarColisionMonstruo(obBlueFire2, obAfraidWhite2))
+            {
+                Afraidwhite2.Height = 70;
+                Afraidwhite2.Width = 70;
+                obAfraidWhite2.dAlto = 70;
+                obAfraidWhite2.dAncho = 70;
+
+                Afraidwhite2.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                Afraidwhite2.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                obAfraidWhite2.activo = false;
+                Afraidwhite2.Visibility = Visibility.Hidden;
+
+                BlueFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+
+                BlueFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+                obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
+                obBlueFire2.dPosY = (double)BlueFire2.GetValue(Canvas.TopProperty);
+            }
+            else if (checarColisionMonstruo(obGoldFire1,obAfraidYellow1))
+            {
+                Afraidyellow.Height = 70;
+                Afraidyellow.Width = 70;
+                obAfraidYellow1.dAlto = 70;
+                obAfraidYellow1.dAncho = 70;
+
+                Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                obAfraidYellow1.activo = false;
+                Afraidyellow.Visibility = Visibility.Hidden;
+
+                GoldFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+
+                GoldFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+                obGoldFire1.dPosX = (double)GoldFire1.GetValue(Canvas.LeftProperty);
+                obGoldFire1.dPosY = (double)GoldFire1.GetValue(Canvas.TopProperty);
+
+
+            }
+            else if (checarColisionMonstruo(obGoldFire2, obAfraidYellow1))
+            {
+                Afraidyellow.Height = 70;
+                Afraidyellow.Width = 70;
+                obAfraidYellow1.dAlto = 70;
+                obAfraidYellow1.dAncho = 70;
+
+                Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                obAfraidYellow1.activo = false;
+                Afraidyellow.Visibility = Visibility.Hidden;
+
+                GoldFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+
+                GoldFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+                obGoldFire2.dPosX = (double)GoldFire2.GetValue(Canvas.LeftProperty);
+                obGoldFire2.dPosY = (double)GoldFire2.GetValue(Canvas.TopProperty);
             }
 
 
@@ -192,11 +317,12 @@ namespace Ejemplo_PlantillaSkeleton
                 case 4:
                     if (obAfraidWhite2.activo != true)
                     {
-                        //obAfraidWhite2.activo = true;
-                        ////Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-                        ////Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-                        //obAfraidWhite2.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
-                        //obAfraidWhite2.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
+                        obAfraidWhite2.activo = true;
+                        Afraidwhite2.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                        Afraidwhite2.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                        obAfraidWhite2.dPosX = (double)Afraidwhite2.GetValue(Canvas.LeftProperty);
+                        obAfraidWhite2.dPosY = (double)Afraidwhite2.GetValue(Canvas.TopProperty);
+                        Afraidwhite2.Visibility = Visibility.Visible;
                     }
                     monster++;
                     break;
@@ -388,7 +514,8 @@ namespace Ejemplo_PlantillaSkeleton
                 return false;
             if (monstruo.dPosX > fuego.dPosX + fuego.dAncho) //Colisión	por	la	derecha	ob2
                 return false;
-
+            monsterScream.Play();
+            
             return true;
         }
         private void InitializeMonstersFire()
@@ -404,6 +531,8 @@ namespace Ejemplo_PlantillaSkeleton
             obAfraidRed1.activo = false;
             Afraid.Visibility = Visibility.Collapsed;
 
+
+
             obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
             obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
             obAfraidWhite1.dAlto = Afraidwhite.Height;
@@ -411,7 +540,16 @@ namespace Ejemplo_PlantillaSkeleton
             obAfraidWhite1.tipo = 2;
             obAfraidWhite1.activo = false;
             Afraidwhite.Visibility = Visibility.Collapsed;
-            
+
+
+            obAfraidWhite2.dPosX = (double)Afraidwhite2.GetValue(Canvas.LeftProperty);
+            obAfraidWhite2.dPosY = (double)Afraidwhite2.GetValue(Canvas.TopProperty);
+            obAfraidWhite2.dAlto = Afraidwhite2.Height;
+            obAfraidWhite2.dAncho = Afraidwhite2.Width;
+            obAfraidWhite2.tipo = 2;
+            obAfraidWhite2.activo = false;
+            Afraidwhite2.Visibility = Visibility.Collapsed;
+
             obAfraidYellow1.dPosX = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
             obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(Canvas.TopProperty);
             obAfraidYellow1.dAlto = Afraidyellow.Height;
@@ -492,9 +630,7 @@ namespace Ejemplo_PlantillaSkeleton
         }
         private void UpdateMonsters()
         {
-
-            Afraid.SetValue(Canvas.LeftProperty, obAfraidRed1.dPosX);
-            Afraid.SetValue(Canvas.TopProperty, obAfraidRed1.dPosY);
+            
             //Afraid.SetValue(HeightProperty, obAfraidRed1.dAlto);
 
             if (obAfraidRed1.activo)
@@ -521,10 +657,17 @@ namespace Ejemplo_PlantillaSkeleton
                 obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(LeftProperty);
                 obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(TopProperty);
             }
-           
 
-            Afraidwhite.SetValue(Canvas.LeftProperty, obAfraidYellow1.dPosX);
-            Afraid.SetValue(Canvas.TopProperty, obAfraidYellow1.dPosY);
+            if (obAfraidWhite2.activo)
+            {
+                Afraidwhite2.Height *= 1.1;
+                Afraidwhite2.Width *= 1.1;
+                obAfraidWhite2.dAlto = Afraidwhite2.Height;
+                obAfraidWhite2.dAncho = Afraidwhite2.Width;
+                obAfraidWhite2.dPosX = (double)Afraidwhite2.GetValue(LeftProperty);
+                obAfraidWhite2.dPosY = (double)Afraidwhite2.GetValue(TopProperty);
+            }
+            
 
             if (obAfraidYellow1.activo)
             {
