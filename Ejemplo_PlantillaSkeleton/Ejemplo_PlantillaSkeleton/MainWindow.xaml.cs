@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Microsoft.Kinect;
 using System.IO;
 using System.Windows.Threading;
+using System.Media;
 /*---------------------------*/
 
 namespace Ejemplo_PlantillaSkeleton
@@ -37,15 +38,12 @@ namespace Ejemplo_PlantillaSkeleton
         Point joint_Point = new Point(); //Permite obtener los datos del Joint
                                          /* ------------------------------------------------------------------------- */
                                          //Variables	que	se	emplearán	para	almacenar	el	centro	del	aro
-        double dXC, dYC;
-        //Variables	que	almacenan	el	radio	de	cada	uno	de	los	círculos.
-        double dRadioC1, dRadioC2;
 
 
-        double iAnchoCanvas, iAltoCanvas;
 
-        double dAncho = 742 - 70;	//Ancho	del	Canvas	– Ancho del fuego.
-        double dAlto = 684 - 70;   // alto del canvas - alto del fuego 
+        
+         
+
 
         DispatcherTimer timer;
 
@@ -58,6 +56,7 @@ namespace Ejemplo_PlantillaSkeleton
             public double dAlto;
             public int tipo; // 1-blanco , 2-rojo , 3- amarillo; 
             public bool activo; 
+
         }
 
         //	Estructura	para	almacenar	la	información	del	objeto
@@ -75,11 +74,14 @@ namespace Ejemplo_PlantillaSkeleton
         Monstruos  obAfraidRed1, obAfraidWhite1,obAfraidYellow1, obAfraidRed2, obAfraidWhite2, obAfraidYellow2;
         Random rnd = new Random();
         int monster = 1;
-
+        SoundPlayer background; 
         public MainWindow()
         {
             InitializeComponent();
 
+            background = new SoundPlayer(@"C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Sounds\Faint.wav");
+            background.PlayLooping();
+    
             // Enfocar el Canvas
             MainCanvas.Focusable = true;
             MainCanvas.Focus();
@@ -113,7 +115,35 @@ namespace Ejemplo_PlantillaSkeleton
             {
                 Afraid.Height = 70;
                 Afraid.Width = 70;
-                
+                obAfraidRed1.dAlto = 70;
+                obAfraidRed1.dAncho = 70;
+                Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
+                obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
+
+                obAfraidRed1.activo = false;
+                Afraid.Visibility = Visibility.Hidden;
+
+                RedFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+
+                RedFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
+                obRedFire1.dPosX = (double)RedFire1.GetValue(Canvas.LeftProperty);
+                obRedFire1.dPosY = (double)RedFire1.GetValue(Canvas.TopProperty);
+
+
+            }
+            else if (checarColisionMonstruo(obBlueFire1, obAfraidWhite1))
+            {
+                Afraidwhite.Height = 70;
+                Afraidwhite.Width = 70;
+                obAfraidWhite1.dAlto = 70;
+                obAfraidWhite1.dAncho = 70;
+
+                Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
+                Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                obAfraidWhite1.activo = false;
+                Afraidwhite.Visibility = Visibility.Hidden;
             }
 
 
@@ -192,7 +222,7 @@ namespace Ejemplo_PlantillaSkeleton
                     //    obAfraidYellow2.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
                     //    obAfraidYellow2.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
                     }
-                    monster = rnd.Next(1, 5);
+                    monster = 1;
                     break; 
 
             }
@@ -215,13 +245,7 @@ namespace Ejemplo_PlantillaSkeleton
                 dMano_X = joint_Point.X;
                 dMano_Y = joint_Point.Y;
 
-                if (obRedFire1.colisionando == true)
-                {
-                    Fire1.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
-                    Fire1.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
-                    obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
-                    obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
-                }
+                
                 // Modificar coordenadas del indicador que refleja el movimiento (Ellipse rojo)
                 Puntero.SetValue(Canvas.TopProperty, dMano_Y - 12.5);
                 Puntero.SetValue(Canvas.LeftProperty, dMano_X - 12.5);
@@ -233,33 +257,113 @@ namespace Ejemplo_PlantillaSkeleton
                 obPuntero.dPosY = (double)Puntero.GetValue(Canvas.TopProperty);
                 obPuntero.dAncho = Puntero.Width;
                 obPuntero.dAlto = Puntero.Height;
-
-                
-
                 // Indicar Id de la persona que es trazada
                 LID.Content = skeleton.TrackingId;
 
-                Console.WriteLine("LLega aqui");
                 if (checarColisionFuego(obPuntero, obRedFire1) && obRedFire1.colisionando == false)
                 {
-                    Console.WriteLine("entro");
-                   
+                    AllFalse();
                     obRedFire1.colisionando = true;
-                    obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
-                    obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
+                    obRedFire1.dPosX = (double)RedFire1.GetValue(Canvas.LeftProperty);
+                    obRedFire1.dPosY = (double)RedFire1.GetValue(Canvas.TopProperty);
+
                 }
                 else if (checarColisionFuego(obPuntero, obRedFire2) && obRedFire2.colisionando == false)
                 {
+                    AllFalse();
                     obRedFire2.colisionando = true;
-                    obRedFire2.dPosX = (double)Fire2.GetValue(Canvas.LeftProperty);
-                    obRedFire2.dPosY = (double)Fire2.GetValue(Canvas.TopProperty);
+                    obRedFire2.dPosX = (double)RedFire2.GetValue(Canvas.LeftProperty);
+                    obRedFire2.dPosY = (double)RedFire2.GetValue(Canvas.TopProperty);
+                }
+                else if (checarColisionFuego(obPuntero, obBlueFire1) && obBlueFire1.colisionando == false)
+                {
+                    AllFalse();
+                    obBlueFire1.colisionando = true;
+                    obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
+                    obBlueFire1.dPosY = (double)BlueFire1.GetValue(Canvas.TopProperty);
+
+                }
+                else if (checarColisionFuego(obPuntero, obBlueFire2) && obBlueFire2.colisionando == false)
+                {
+                    AllFalse();
+                    obBlueFire2.colisionando = true;
+                    obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
+                    obBlueFire2.dPosY = (double)BlueFire2.GetValue(Canvas.TopProperty);
+                }
+                else if (checarColisionFuego(obPuntero, obGoldFire1) && obGoldFire1.colisionando == false)
+                {
+                    AllFalse();
+                    obGoldFire1.colisionando = true;
+                    obGoldFire1.dPosX = (double)GoldFire1.GetValue(Canvas.LeftProperty);
+                    obGoldFire1.dPosY = (double)GoldFire1.GetValue(Canvas.TopProperty);
+
+                }
+                else if (checarColisionFuego(obPuntero, obGoldFire2) && obGoldFire2.colisionando == false)
+                {
+                    AllFalse();
+                    obGoldFire2.colisionando = true;
+                    obGoldFire2.dPosX = (double)GoldFire2.GetValue(Canvas.LeftProperty);
+                    obGoldFire2.dPosY = (double)GoldFire2.GetValue(Canvas.TopProperty);
                 }
 
-                
 
+                if (obRedFire1.colisionando == true)
+                {
+                    AllFalse();
+                    obRedFire1.colisionando = true;
+                    RedFire1.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
+                    RedFire1.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
+                    obRedFire1.dPosX = (double)RedFire1.GetValue(Canvas.LeftProperty);
+                    obRedFire1.dPosY = (double)RedFire1.GetValue(Canvas.TopProperty);
+                }
+                else if (obRedFire2.colisionando == true)
+                {
+                    AllFalse();
+                    obRedFire2.colisionando = true;
+                    RedFire2.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
+                    RedFire2.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
+                    obRedFire2.dPosX = (double)RedFire2.GetValue(Canvas.LeftProperty);
+                    obRedFire2.dPosY = (double)RedFire2.GetValue(Canvas.TopProperty);
+                }
+                else if (obBlueFire1.colisionando == true)
+                {
+                    AllFalse();
+                    obBlueFire1.colisionando = true;
+                    BlueFire1.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
+                    BlueFire1.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
+                    obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
+                    obBlueFire1.dPosY = (double)BlueFire1.GetValue(Canvas.TopProperty);
+                }
+                else if (obBlueFire2.colisionando == true)
+                {
+                    AllFalse();
+                    obBlueFire2.colisionando = true;
+                    BlueFire2.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
+                    BlueFire2.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
+                    obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
+                    obBlueFire2.dPosY = (double)BlueFire2.GetValue(Canvas.TopProperty);
+                }
+                else if (obGoldFire1.colisionando == true)
+                {
+                    AllFalse();
+                    obGoldFire1.colisionando = true;
+                    GoldFire1.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
+                    GoldFire1.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
+                    obGoldFire1.dPosX = (double)GoldFire1.GetValue(Canvas.LeftProperty);
+                    obGoldFire1.dPosY = (double)GoldFire1.GetValue(Canvas.TopProperty);
+                }
+                else if (obGoldFire2.colisionando == true)
+                {
+                    AllFalse();
+                    obGoldFire2.colisionando = true;
+                    GoldFire2.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
+                    GoldFire2.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
+                    obGoldFire2.dPosX = (double)GoldFire2.GetValue(Canvas.LeftProperty);
+                    obGoldFire2.dPosY = (double)GoldFire2.GetValue(Canvas.TopProperty);
+                }
             }
-           
-        }
+
+}
 
         private bool checarColisionFuego(Fuego puntero, Fuego fire)
         {
@@ -300,7 +404,6 @@ namespace Ejemplo_PlantillaSkeleton
             obAfraidRed1.activo = false;
             Afraid.Visibility = Visibility.Collapsed;
 
-           
             obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
             obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
             obAfraidWhite1.dAlto = Afraidwhite.Height;
@@ -317,24 +420,75 @@ namespace Ejemplo_PlantillaSkeleton
             obAfraidYellow1.activo = false;
             Afraidyellow.Visibility = Visibility.Collapsed;
 
-            //// inicio en random la location del Fuego 
-            //Fire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-            //Fire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
-            obRedFire1.dPosX = (double)Fire1.GetValue(Canvas.LeftProperty);
-            obRedFire1.dPosY = (double)Fire1.GetValue(Canvas.TopProperty);
-            obRedFire1.dAlto = Fire1.Height;
-            obRedFire1.dAncho = Fire1.Width;
+            //// inicio en random la location del Fuego izquierdos
+            ///Redfire1
+            RedFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+            RedFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 395-73));
+            obRedFire1.dPosX = (double)RedFire1.GetValue(Canvas.LeftProperty);
+            obRedFire1.dPosY = (double)RedFire1.GetValue(Canvas.TopProperty);
+            obRedFire1.dAlto = RedFire1.Height;
+            obRedFire1.dAncho = RedFire1.Width;
             obRedFire1.tipo = 1;
             obRedFire1.colisionando = false;
+            ///Goldfire1
+            BlueFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+            BlueFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 395 - 73));
+            obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
+            obBlueFire1.dPosY = (double)BlueFire1.GetValue(Canvas.TopProperty);
+            obBlueFire1.dAlto = BlueFire1.Height;
+            obBlueFire1.dAncho = BlueFire1.Width;
+            obBlueFire1.tipo = 2;
+            obBlueFire1.colisionando = false;
+
+            ///Yellowfire1
+            GoldFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
+            GoldFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 395 - 73));
+            obGoldFire1.dPosX = (double)GoldFire1.GetValue(Canvas.LeftProperty);
+            obGoldFire1.dPosY = (double)GoldFire1.GetValue(Canvas.TopProperty);
+            obGoldFire1.dAlto = GoldFire1.Height;
+            obGoldFire1.dAncho = GoldFire1.Width;
+            obGoldFire1.tipo = 3;
+            obGoldFire1.colisionando = false;
 
 
-
-            Fire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(688, 785 - 70));
-            Fire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
-            obRedFire2.dPosX = (double)Fire2.GetValue(Canvas.LeftProperty);
-            obRedFire2.dPosY = (double)Fire2.GetValue(Canvas.TopProperty);
+            //// inicio en random la location del Fuego derechos
+            RedFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(531, 619-70));
+            RedFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 395-73));
+            obRedFire2.dPosX = (double)RedFire2.GetValue(Canvas.LeftProperty);
+            obRedFire2.dPosY = (double)RedFire2.GetValue(Canvas.TopProperty);
+            obRedFire2.dAlto = RedFire2.Height;
+            obRedFire2.dAncho = RedFire2.Width;
             obRedFire2.tipo = 1;
+            obRedFire2.colisionando = false;
 
+            BlueFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(531, 619 - 70));
+            BlueFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 395 - 73));
+            obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
+            obBlueFire2.dPosY = (double)BlueFire2.GetValue(Canvas.TopProperty);
+            obBlueFire2.dAlto = BlueFire2.Height;
+            obBlueFire2.dAncho = BlueFire2.Width;
+            obBlueFire2.tipo = 2;
+            obBlueFire2.colisionando = false;
+
+            GoldFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(531, 619 - 70));
+            GoldFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 395 - 73));
+            obGoldFire2.dPosX = (double)GoldFire2.GetValue(Canvas.LeftProperty);
+            obGoldFire2.dPosY = (double)GoldFire2.GetValue(Canvas.TopProperty);
+            obGoldFire2.dAlto = GoldFire2.Height;
+            obGoldFire2.dAncho = GoldFire2.Width;
+            obGoldFire2.tipo = 3;
+            obGoldFire2.colisionando = false;
+
+        }
+        private void AllFalse()
+        {
+            obRedFire1.colisionando = false;
+            obRedFire2.colisionando = false;
+            obBlueFire1.colisionando = false;
+            obBlueFire2.colisionando = false;
+            obGoldFire1.colisionando = false;
+            obGoldFire2.colisionando = false;
+            
         }
         private void UpdateMonsters()
         {

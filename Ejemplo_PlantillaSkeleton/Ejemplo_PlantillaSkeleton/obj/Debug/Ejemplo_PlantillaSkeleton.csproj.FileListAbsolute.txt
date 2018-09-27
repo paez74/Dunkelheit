@@ -82,3 +82,5 @@ C:\Users\paez7\Desktop\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSke
 C:\Users\paez7\Desktop\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.csproj.CopyComplete
 C:\Users\paez7\Desktop\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.exe
 C:\Users\paez7\Desktop\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton.pdb
+C:\Users\paez7\Desktop\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_Content.g.cs
+C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Ejemplo_PlantillaSkeleton\Ejemplo_PlantillaSkeleton\obj\Debug\Ejemplo_PlantillaSkeleton_Content.g.cs

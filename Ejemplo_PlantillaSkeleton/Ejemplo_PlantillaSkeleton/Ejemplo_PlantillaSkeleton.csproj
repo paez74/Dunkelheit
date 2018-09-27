@@ -118,6 +118,11 @@
     <Resource Include="scared blanco %282%29.jpeg" />
     <Resource Include="scared dorado.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="yellow fire sprite.jpg" />
+    <Resource Include="blue fire.jpg" />
+    <Content Include="Faint.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
