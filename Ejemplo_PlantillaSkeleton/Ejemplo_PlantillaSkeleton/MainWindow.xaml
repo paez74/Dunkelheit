@@ -33,10 +33,14 @@
             <Image	x:Name="BlueFire2"	 Width="43"	Height="73"   Canvas.Left="576" Canvas.Top="64"  Source="blue fire.jpg"	/>
             <Image	x:Name="GoldFire1"	 Width="43"	Height="73"   Canvas.Left="46" Canvas.Top="395"  Source="yellow fire sprite.jpg"	/>
             <Image	x:Name="GoldFire2"	 Width="43"	Height="73"   Canvas.Left="576" Canvas.Top="395"  Source="yellow fire sprite.jpg"	/>
+            <Label x:Name="kills" Content="Kills" Canvas.Left="398" Canvas.Top="620" Height="54" Width="100" AutomationProperties.IsOffscreenBehavior="Onscreen" FontSize="36" Foreground="#FFD1D11E"/>
+            <Label x:Name="score" Content="0" Canvas.Left="475" Canvas.Top="620" Width="69" Foreground="#FFE0D70F" FontSize="36"/>
         </Canvas>
         <Label	x:Name="L1"	Content="Estatus:	"	FontSize="15"	FontWeight="Bold"	Background="Bisque"	HorizontalAlignment="Left"	VerticalAlignment="Top" Margin="61,214.766,0,0" Height="30" Width="68" Grid.Row="1"/>
         <Label	x:Name="LEstatus"	Content="Desconectado"	FontSize="15" Foreground="#FFDA2828"	HorizontalAlignment="Left"	VerticalAlignment="Top" Margin="141,214.766,0,0" Height="30" Width="104" Grid.Row="1"/>
         <Label	x:Name="L3"	Content="ID:	"	FontSize="15"	FontWeight="Bold" Background="Bisque"	HorizontalAlignment="Left"	VerticalAlignment="Top"	 Margin="305,214.766,0,0" Height="30" Width="34" Grid.Row="1"/>
         <Label	x:Name="LID"	Content="0"	FontSize="15"	Foreground="#FFDA2828" HorizontalAlignment="Left"	VerticalAlignment="Top"	Margin="344,214.766,0,0" Height="30" Width="18" Grid.Row="1"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image x:Name="gameover" HorizontalAlignment="Left" Height="990" Margin="0,10,-156,-296" VerticalAlignment="Top" Width="916" Grid.RowSpan="2" Source="gameover (2).png" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -119,6 +119,7 @@
     <Resource Include="scared dorado.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="gameover %282%29.png" />
     <Resource Include="yellow fire sprite.jpg" />
     <Resource Include="blue fire.jpg" />
     <Content Include="Faint.wav" />
