@@ -76,16 +76,16 @@ namespace Ejemplo_PlantillaSkeleton
         Monstruos  obAfraidRed1, obAfraidWhite1,obAfraidYellow1, obAfraidRed2, obAfraidWhite2, obAfraidYellow2;
         Random rnd = new Random();
         int monster = 1;
-        SoundPlayer monsterScream;
-        SoundPlayer gameOverScream; 
+        SoundPlayer monsterScream; // grito de monstruo
+        SoundPlayer gameOverScream;  // grito de game Over 
     
         public MainWindow()
         {
             InitializeComponent();
 
             
-            monsterScream = new SoundPlayer(@"C:\Users/paez7/Desktop/Dunkelheit/Sounds/Monster.wav");
-            gameOverScream = new SoundPlayer(@"C:\Users/paez7/Desktop/Dunkelheit/Sounds/GameOver.wav");
+            monsterScream = new SoundPlayer(@"C:\Users/eduar_000/Desktop/Apps/Dunkelheit/Sounds/Monster.wav");
+            gameOverScream = new SoundPlayer(@"C:\Users/eduar_000/Desktop/Apps/Dunkelheit/Sounds/GameOver.wav");
           
     
             // Enfocar el Canvas
@@ -116,123 +116,145 @@ namespace Ejemplo_PlantillaSkeleton
 
            
 
-            UpdateMonsters();
-            if (checarColisionMonstruo(obRedFire1, obAfraidRed1))
-            {
+            UpdateMonsters(); // hago crecer a los monstruos 
+
+            // checo si hubo alguna colision con fuego 
+            if (checarColisionMonstruo(obRedFire1, obAfraidRed1)) // monstruo rojo con fuego rojo 
+
+            {   // Hago el tamaño original 
                 Afraid.Height = 70;
                 Afraid.Width = 70;
                 obAfraidRed1.dAlto = 70;
                 obAfraidRed1.dAncho = 70;
+                obAfraidRed1.iSize = 0; 
+                // Mando a el monstruo a una ubicacion random  
                 Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
                 Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                 obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
                 obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
-                
+                // no esta activo el monstruo  y se hace invisible 
                 obAfraidRed1.activo = false;
                 Afraid.Visibility = Visibility.Hidden;
 
+                // el fuego se manda a otro lado 
                 RedFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-
                 RedFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
                 obRedFire1.dPosX = (double)RedFire1.GetValue(Canvas.LeftProperty);
                 obRedFire1.dPosY = (double)RedFire1.GetValue(Canvas.TopProperty);
                 
 
             }
-            else if (checarColisionMonstruo(obRedFire2, obAfraidRed1))
+            else if (checarColisionMonstruo(obRedFire2, obAfraidRed1)) // choque monstruo rojo con fuego 2
             {
-                
+                // Hago el tamaño original 
                 Afraid.Height = 70;
                 Afraid.Width = 70;
                 obAfraidRed1.dAlto = 70;
                 obAfraidRed1.dAncho = 70;
+                obAfraidRed1.iSize = 0; 
+
+                //mando el monstruo a una ubicacion random 
                 Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
                 Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                 obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
                 obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
 
+                // desactivo el monstruo y lo hago invisible 
                 obAfraidRed1.activo = false;
                 Afraid.Visibility = Visibility.Hidden;
 
+                // muevo el fuego 
                 RedFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-
                 RedFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
                 obRedFire2.dPosX = (double)RedFire2.GetValue(Canvas.LeftProperty);
                 obRedFire2.dPosY = (double)RedFire2.GetValue(Canvas.TopProperty);
                 
 
             }
-            else if (checarColisionMonstruo(obBlueFire1, obAfraidWhite1))
-            {
+            else if (checarColisionMonstruo(obBlueFire1, obAfraidWhite1)) // monstruo blanco con fuego azul 
+            {   // regreso a los monstruos originales 
                 Afraidwhite.Height = 70;
                 Afraidwhite.Width = 70;
                 obAfraidWhite1.dAlto = 70;
                 obAfraidWhite1.dAncho = 70;
+                obAfraidWhite1.iSize = 0; 
 
+                // mover al monstruo a una posicion random 
                 Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
                 Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                // hazlo  falso e invisible 
                 obAfraidWhite1.activo = false;
                 Afraidwhite.Visibility = Visibility.Hidden;
 
+                // muevo posicion del fuego azul 
                 BlueFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-
                 BlueFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
                 obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
                 obBlueFire1.dPosY = (double)BlueFire1.GetValue(Canvas.TopProperty);
                 
             }
-            else if (checarColisionMonstruo(obBlueFire2, obAfraidWhite1))
+            else if (checarColisionMonstruo(obBlueFire2, obAfraidWhite1)) // fantasma blanco con fuego azul 2
             {
+                // regreso a los monstruos a tamaño originales
                 Afraidwhite.Height = 70;
                 Afraidwhite.Width = 70;
                 obAfraidWhite1.dAlto = 70;
                 obAfraidWhite1.dAncho = 70;
+                obAfraidWhite1.iSize = 0; 
 
+                // move the monster to a random  position 
                 Afraidwhite.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
                 Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+                // make monsters hidden and the active to false 
                 obAfraidWhite1.activo = false;
                 Afraidwhite.Visibility = Visibility.Hidden;
 
+                // move position of blue fire 
                 BlueFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-
                 BlueFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
                 obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
                 obBlueFire2.dPosY = (double)BlueFire2.GetValue(Canvas.TopProperty);
                 
             }
-            else if (checarColisionMonstruo(obBlueFire1, obAfraidWhite2))
+            else if (checarColisionMonstruo(obBlueFire1, obAfraidWhite2)) // fuego azul 1 con monstruo blanco 2 
             {
+                // monstruo regresa a tamaño normal 
                 Afraidwhite2.Height = 70;
                 Afraidwhite2.Width = 70;
                 obAfraidWhite2.dAlto = 70;
                 obAfraidWhite2.dAncho = 70;
-
+                obAfraidWhite2.iSize = 0; 
+                // moer monstruo a posicion random 
                 Afraidwhite2.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
                 Afraidwhite2.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
+
+                //  hacer monstruo invisible y falso 
                 obAfraidWhite2.activo = false;
                 Afraidwhite2.Visibility = Visibility.Hidden;
 
+                // fuego azul se va a un lugar random.
                 BlueFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-
                 BlueFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
                 obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
                 obBlueFire1.dPosY = (double)BlueFire1.GetValue(Canvas.TopProperty);
                 
             }
-            else if (checarColisionMonstruo(obBlueFire2, obAfraidWhite2))
-            {
+            else if (checarColisionMonstruo(obBlueFire2, obAfraidWhite2)) // monstruo blanco 2 y fuego azul2
+            {   
+                // regreso monsruos a tamaño original 
                 Afraidwhite2.Height = 70;
                 Afraidwhite2.Width = 70;
                 obAfraidWhite2.dAlto = 70;
                 obAfraidWhite2.dAncho = 70;
-
+                obAfraidWhite2.iSize = 0; 
+                // muevo monstruo a posicion random 
                 Afraidwhite2.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
                 Afraidwhite2.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                 obAfraidWhite2.activo = false;
                 Afraidwhite2.Visibility = Visibility.Hidden;
 
+                //muevo al fuego azul 
                 BlueFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-
                 BlueFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
                 obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
                 obBlueFire2.dPosY = (double)BlueFire2.GetValue(Canvas.TopProperty);
@@ -240,18 +262,20 @@ namespace Ejemplo_PlantillaSkeleton
             }
             else if (checarColisionMonstruo(obGoldFire1,obAfraidYellow1))
             {
+                // cambio el tamaño del monstruo amarillo 
                 Afraidyellow.Height = 70;
                 Afraidyellow.Width = 70;
                 obAfraidYellow1.dAlto = 70;
                 obAfraidYellow1.dAncho = 70;
-
+                obAfraidYellow1.iSize = 0;
+                //muevo el monstruo a un lugar random 
                 Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
                 Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                 obAfraidYellow1.activo = false;
                 Afraidyellow.Visibility = Visibility.Hidden;
-
+                 
+                // muevo el fuego a un lugar random 
                 GoldFire1.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
-
                 GoldFire1.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
                 obGoldFire1.dPosX = (double)GoldFire1.GetValue(Canvas.LeftProperty);
                 obGoldFire1.dPosY = (double)GoldFire1.GetValue(Canvas.TopProperty);
@@ -260,25 +284,29 @@ namespace Ejemplo_PlantillaSkeleton
             }
             else if (checarColisionMonstruo(obGoldFire2, obAfraidYellow1))
             {
+                // monstruo cambia de tamaño 
                 Afraidyellow.Height = 70;
                 Afraidyellow.Width = 70;
                 obAfraidYellow1.dAlto = 70;
                 obAfraidYellow1.dAncho = 70;
-
+                obAfraidYellow1.iSize = 0; 
+                // mover el monstruo a una posicion random
                 Afraidyellow.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
                 Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                 obAfraidYellow1.activo = false;
                 Afraidyellow.Visibility = Visibility.Hidden;
 
-                GoldFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
 
+                // muevo el fuego a un lugar random 
+                GoldFire2.SetValue(Canvas.LeftProperty, (double)rnd.Next(15, 127 - 70));
                 GoldFire2.SetValue(Canvas.TopProperty, (double)rnd.Next(0, 604 - 70));
                 obGoldFire2.dPosX = (double)GoldFire2.GetValue(Canvas.LeftProperty);
                 obGoldFire2.dPosY = (double)GoldFire2.GetValue(Canvas.TopProperty);
+
                 
             }
 
-            switch (monster)
+            switch (monster)  // inicializo lso monstruos en la pantalla 
             {
                 case 1:
                     if (obAfraidRed1.activo != true)
@@ -288,25 +316,12 @@ namespace Ejemplo_PlantillaSkeleton
                         Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                         obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
                         obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
-                        Afraid.Visibility = Visibility.Visible;
+                        Afraid.Visibility = Visibility.Visible; // hago al monstruo visible 
 
                     }
                     monster++;
                     break;
                 case 2:
-                    if (obAfraidRed2.activo != true)
-                    {
-                        obAfraidRed2.activo = true;
-                        //Afraid.SetValue(Canvas.LeftProperty, (double)rnd.Next(220, 596));
-                        //Afraid.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
-                        obAfraidRed2.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
-                        obAfraidRed2.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
-                        //Afraid.Visibility = Visibility.Visible;
-
-                    }
-                    monster++;
-                    break;
-                case 3:
                     if (obAfraidWhite1.activo != true)
                     {
                         obAfraidWhite1.activo = true;
@@ -314,12 +329,12 @@ namespace Ejemplo_PlantillaSkeleton
                         Afraidwhite.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                         obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(Canvas.LeftProperty);
                         obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(Canvas.TopProperty);
-                        Afraidwhite.Visibility = Visibility.Visible;
+                        Afraidwhite.Visibility = Visibility.Visible; // hago el monsruo visible 
 
                     }
                     monster++;
                     break;
-                case 4:
+                case 3:
                     if (obAfraidWhite2.activo != true)
                     {
                         obAfraidWhite2.activo = true;
@@ -327,11 +342,11 @@ namespace Ejemplo_PlantillaSkeleton
                         Afraidwhite2.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                         obAfraidWhite2.dPosX = (double)Afraidwhite2.GetValue(Canvas.LeftProperty);
                         obAfraidWhite2.dPosY = (double)Afraidwhite2.GetValue(Canvas.TopProperty);
-                        Afraidwhite2.Visibility = Visibility.Visible;
+                        Afraidwhite2.Visibility = Visibility.Visible; // hago el monstruo visible 
                     }
                     monster++;
                     break;
-                case 5:
+                case 4:
                     if (obAfraidYellow1.activo != true)
                     {
                         obAfraidYellow1.activo = true;
@@ -339,10 +354,10 @@ namespace Ejemplo_PlantillaSkeleton
                         Afraidyellow.SetValue(Canvas.TopProperty, (double)rnd.Next(10, 506));
                         obAfraidYellow1.dPosX = (double)Afraidyellow.GetValue(Canvas.LeftProperty);
                         obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(Canvas.TopProperty);
-                        Afraidyellow.Visibility = Visibility.Visible;
+                        Afraidyellow.Visibility = Visibility.Visible; // hago el monsruo visible 
 
                     }
-                    monster = 1;
+                    monster = 1; // se regresa a la posicion uno para
                     break;
                 
 
@@ -373,7 +388,7 @@ namespace Ejemplo_PlantillaSkeleton
                 Puntero.SetValue(Canvas.TopProperty, dMano_Y - 12.5);
                 Puntero.SetValue(Canvas.LeftProperty, dMano_X - 12.5);
 
-                score.Content = iKills.ToString();
+                score.Content = iKills.ToString(); // muestro el numero de fantasmas muertos
 
                 ////Puntero
                 obPuntero.dPosX = (double)Puntero.GetValue(Canvas.LeftProperty);
@@ -383,24 +398,30 @@ namespace Ejemplo_PlantillaSkeleton
                 // Indicar Id de la persona que es trazada
                 LID.Content = skeleton.TrackingId;
 
+                // Si hay colision con el fuego  y esta en false 
                 if (checarColisionFuego(obPuntero, obRedFire1) && obRedFire1.colisionando == false)
                 {
+                    // marco todos como falsos 
                     AllFalse();
+                    // hago que el fuego este colisionando 
                     obRedFire1.colisionando = true;
                     obRedFire1.dPosX = (double)RedFire1.GetValue(Canvas.LeftProperty);
                     obRedFire1.dPosY = (double)RedFire1.GetValue(Canvas.TopProperty);
 
                 }
                 else if (checarColisionFuego(obPuntero, obRedFire2) && obRedFire2.colisionando == false)
-                {
+                {    // todos false
                     AllFalse();
+                    // hago que el fuego rojo 2 este colisionando 
                     obRedFire2.colisionando = true;
                     obRedFire2.dPosX = (double)RedFire2.GetValue(Canvas.LeftProperty);
                     obRedFire2.dPosY = (double)RedFire2.GetValue(Canvas.TopProperty);
                 }
                 else if (checarColisionFuego(obPuntero, obBlueFire1) && obBlueFire1.colisionando == false)
                 {
+                    // hago a todos false 
                     AllFalse();
+                    // hago que el fuego azul este colisionando
                     obBlueFire1.colisionando = true;
                     obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
                     obBlueFire1.dPosY = (double)BlueFire1.GetValue(Canvas.TopProperty);
@@ -408,14 +429,18 @@ namespace Ejemplo_PlantillaSkeleton
                 }
                 else if (checarColisionFuego(obPuntero, obBlueFire2) && obBlueFire2.colisionando == false)
                 {
+                    // hago a todos false
                     AllFalse();
+                    // hago que el fuego azul 2 este colisionando
                     obBlueFire2.colisionando = true;
                     obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
                     obBlueFire2.dPosY = (double)BlueFire2.GetValue(Canvas.TopProperty);
                 }
                 else if (checarColisionFuego(obPuntero, obGoldFire1) && obGoldFire1.colisionando == false)
                 {
+                    // hago a todos false 
                     AllFalse();
+                    // hago que el fuego dorado 1 este colisionando
                     obGoldFire1.colisionando = true;
                     obGoldFire1.dPosX = (double)GoldFire1.GetValue(Canvas.LeftProperty);
                     obGoldFire1.dPosY = (double)GoldFire1.GetValue(Canvas.TopProperty);
@@ -423,7 +448,9 @@ namespace Ejemplo_PlantillaSkeleton
                 }
                 else if (checarColisionFuego(obPuntero, obGoldFire2) && obGoldFire2.colisionando == false)
                 {
+                    // hago a todos false
                     AllFalse();
+                    // hago   que la colision con el fuego dorado 2 sea true 
                     obGoldFire2.colisionando = true;
                     obGoldFire2.dPosX = (double)GoldFire2.GetValue(Canvas.LeftProperty);
                     obGoldFire2.dPosY = (double)GoldFire2.GetValue(Canvas.TopProperty);
@@ -432,8 +459,12 @@ namespace Ejemplo_PlantillaSkeleton
 
                 if (obRedFire1.colisionando == true)
                 {
+                    // hago que todos sea false 
                     AllFalse();
+                    // hago que fuego rojo sea true 
                     obRedFire1.colisionando = true;
+
+                    // muevo a fuego rojo a la posicion del puntero
                     RedFire1.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
                     RedFire1.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
                     obRedFire1.dPosX = (double)RedFire1.GetValue(Canvas.LeftProperty);
@@ -441,8 +472,11 @@ namespace Ejemplo_PlantillaSkeleton
                 }
                 else if (obRedFire2.colisionando == true)
                 {
+                    // hago a todos false 
                     AllFalse();
+                    // fuego rojo 2 si colisiona
                     obRedFire2.colisionando = true;
+                    // muevo a fuego rojo 2 a la posicion del puntero
                     RedFire2.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
                     RedFire2.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
                     obRedFire2.dPosX = (double)RedFire2.GetValue(Canvas.LeftProperty);
@@ -450,8 +484,11 @@ namespace Ejemplo_PlantillaSkeleton
                 }
                 else if (obBlueFire1.colisionando == true)
                 {
+                    // hago a todos false 
                     AllFalse();
+                    // fuego azul 1 si colisiona
                     obBlueFire1.colisionando = true;
+                    // muevo a fuego azul  1 a la posicion del puntero 
                     BlueFire1.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
                     BlueFire1.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
                     obBlueFire1.dPosX = (double)BlueFire1.GetValue(Canvas.LeftProperty);
@@ -459,8 +496,11 @@ namespace Ejemplo_PlantillaSkeleton
                 }
                 else if (obBlueFire2.colisionando == true)
                 {
+                    // todos false
                     AllFalse();
+                    // fuego azul 2 si colisiona
                     obBlueFire2.colisionando = true;
+                    //fuego azul 2  a la posicion del puntero
                     BlueFire2.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
                     BlueFire2.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
                     obBlueFire2.dPosX = (double)BlueFire2.GetValue(Canvas.LeftProperty);
@@ -468,8 +508,11 @@ namespace Ejemplo_PlantillaSkeleton
                 }
                 else if (obGoldFire1.colisionando == true)
                 {
+                    // todos false
                     AllFalse();
+                    // fuego dorado si esta colisionando
                     obGoldFire1.colisionando = true;
+                    // muevo al fuego dorado a la posicion del puntero 
                     GoldFire1.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
                     GoldFire1.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
                     obGoldFire1.dPosX = (double)GoldFire1.GetValue(Canvas.LeftProperty);
@@ -477,8 +520,11 @@ namespace Ejemplo_PlantillaSkeleton
                 }
                 else if (obGoldFire2.colisionando == true)
                 {
+                    // hago a todos false 
                     AllFalse();
+                    // fuego doardo esta colisionando 
                     obGoldFire2.colisionando = true;
+                    // muevo al fuego azul a  puntero 
                     GoldFire2.SetValue(Canvas.TopProperty, Puntero.GetValue(Canvas.TopProperty));
                     GoldFire2.SetValue(Canvas.LeftProperty, Puntero.GetValue(Canvas.LeftProperty));
                     obGoldFire2.dPosX = (double)GoldFire2.GetValue(Canvas.LeftProperty);
@@ -487,7 +533,7 @@ namespace Ejemplo_PlantillaSkeleton
             }
 
 }
-
+        /*Checo colision del fuego con el puntero*/
         private bool checarColisionFuego(Fuego puntero, Fuego fire)
         {
             if (puntero.dPosX + puntero.dAncho < fire.dPosX)     //Colisión	por	la	izquierda	de	ob2
@@ -500,7 +546,7 @@ namespace Ejemplo_PlantillaSkeleton
                 return false;
             return true;
         }
-
+        /*Checo colision del fuego con el Monstruo*/
         private bool checarColisionMonstruo(Fuego fuego, Monstruos monstruo)
         {
             if (monstruo.dPosX + monstruo.dAncho < fuego.dPosX)     //Colisión	por	la	izquierda	de	ob2
@@ -512,22 +558,23 @@ namespace Ejemplo_PlantillaSkeleton
             if (monstruo.dPosX > fuego.dPosX + fuego.dAncho) //Colisión	por	la	derecha	ob2
                 return false;
 
-            monsterScream.Play();
-            iKills++;
+            monsterScream.Play(); // suena el grito del monstruo
+            iKills++; // aumento una al numero de kills 
 
             return true;
         }
 
 
-        /*Checar Sizeee*/
+        /*Checar el tamaño de los monstruos*/
         private void checarsize(Monstruos monstruo)
         {
 
-            if (monstruo.iSize > 11)
+            if (monstruo.iSize > 11) // si el monstruo ha crezido mas de 11 veces 
             {
-                gameover.Visibility = Visibility.Visible;
-                gameOverScream.Play();
-                monster = 7;
+                gameover.Visibility = Visibility.Visible; //  se puede ver la imagen de game over
+                gameOverScream.Play(); // se escucha el grito del monstruo
+                monster = 7; // ya deja de entrar a el loop para inicializar monstruos
+                // todos los objetos de monstruo quedan en falso 
                 obAfraidRed1.activo = false;
                 obAfraidWhite1.activo = false;
                 obAfraidWhite2.activo = false;
@@ -539,12 +586,13 @@ namespace Ejemplo_PlantillaSkeleton
 
 
 
-        private void InitializeMonstersFire()
+        private void InitializeMonstersFire() // esta funcion inicializa los monstruos/fuegos por primera vez 
         {
-            Random rnd = new Random();
-            gameover.Visibility = Visibility.Hidden;
+            Random rnd = new Random(); // numero random para posicion
+            gameover.Visibility = Visibility.Hidden; // se esconde el game over 
 
             //Inicio las imagenes
+            // Son invisibiles y se aparecen de tamaño 0 porque no han crecido 
             obAfraidRed1.dPosX = (double)Afraid.GetValue(Canvas.LeftProperty);
             obAfraidRed1.dPosY = (double)Afraid.GetValue(Canvas.TopProperty);
             obAfraidRed1.dAlto = Afraid.Height;
@@ -643,6 +691,7 @@ namespace Ejemplo_PlantillaSkeleton
             obGoldFire2.colisionando = false;
 
         }
+        /*Funcion hago todos los fuegos false*/
         private void AllFalse()
         {
             obRedFire1.colisionando = false;
@@ -653,11 +702,11 @@ namespace Ejemplo_PlantillaSkeleton
             obGoldFire2.colisionando = false;
             
         }
-        private void UpdateMonsters()
+        private void UpdateMonsters() // esta funcion hace que los monstruos crezcan de tamaño 
         {
             
             //Afraid.SetValue(HeightProperty, obAfraidRed1.dAlto);
-
+            // reviso si los monstruos estan  activos 
             if (obAfraidRed1.activo)
             {
 
@@ -668,10 +717,9 @@ namespace Ejemplo_PlantillaSkeleton
                 obAfraidRed1.dPosX = (double)Afraid.GetValue(LeftProperty);
                 obAfraidRed1.dPosY = (double)Afraid.GetValue(TopProperty);
                 obAfraidRed1.iSize++;
-                checarsize(obAfraidRed1);
+                checarsize(obAfraidRed1); // esta funcion checa si el tamaño esta mas arriba de lo necesario para gameover 
             }
-            //Afraidwhite.SetValue(Canvas.LeftProperty, obAfraidWhite1.dPosX);
-            //Afraidwhite.SetValue(Canvas.TopProperty, obAfraidWhite1.dPosY);
+
 
             if (obAfraidWhite1.activo)
             { 
@@ -683,7 +731,7 @@ namespace Ejemplo_PlantillaSkeleton
                 obAfraidWhite1.dPosX = (double)Afraidwhite.GetValue(LeftProperty);
                 obAfraidWhite1.dPosY = (double)Afraidwhite.GetValue(TopProperty);
                 obAfraidWhite1.iSize++;
-                checarsize(obAfraidWhite1);
+                checarsize(obAfraidWhite1); // esta funcion checa si el tamaño esta mas arriba de lo necesario para gameover 
             }
 
             if (obAfraidWhite2.activo)
@@ -695,7 +743,7 @@ namespace Ejemplo_PlantillaSkeleton
                 obAfraidWhite2.dPosX = (double)Afraidwhite2.GetValue(LeftProperty);
                 obAfraidWhite2.dPosY = (double)Afraidwhite2.GetValue(TopProperty);
                 obAfraidWhite2.iSize++;
-                checarsize(obAfraidWhite2);
+                checarsize(obAfraidWhite2); // esta funcion checa si el tamaño esta mas arriba de lo necesario para gameover 
             }
             
 
@@ -708,7 +756,7 @@ namespace Ejemplo_PlantillaSkeleton
                 obAfraidYellow1.dPosX = (double)Afraidyellow.GetValue(LeftProperty);
                 obAfraidYellow1.dPosY = (double)Afraidyellow.GetValue(TopProperty);
                 obAfraidYellow1.iSize++;
-                checarsize(obAfraidYellow1);
+                checarsize(obAfraidYellow1); // esta funcion checa si el tamaño esta mas arriba de lo necesario para gameover 
             }
             
 
