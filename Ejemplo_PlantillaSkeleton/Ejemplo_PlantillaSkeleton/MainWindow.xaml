@@ -36,6 +36,20 @@
             <Label x:Name="kills" Content="Kills" Canvas.Left="398" Canvas.Top="620" Height="54" Width="100" AutomationProperties.IsOffscreenBehavior="Onscreen" FontSize="36" Foreground="#FFD1D11E"/>
             <Label x:Name="score" Content="0" Canvas.Left="475" Canvas.Top="620" Width="69" Foreground="#FFE0D70F" FontSize="36"/>
         </Canvas>
+        <MediaElement x:Name="mediaElemento">
+            <MediaElement.Triggers>
+                <EventTrigger RoutedEvent="MediaElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <MediaTimeline Source="file:///C:\Users/paez7/Desktop/Dunkelheit/Sounds/faint.wav" Storyboard.TargetName="mediaElemento" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </MediaElement.Triggers>
+        </MediaElement>
+
         <Label	x:Name="L1"	Content="Estatus:	"	FontSize="15"	FontWeight="Bold"	Background="Bisque"	HorizontalAlignment="Left"	VerticalAlignment="Top" Margin="61,214.766,0,0" Height="30" Width="68" Grid.Row="1"/>
         <Label	x:Name="LEstatus"	Content="Desconectado"	FontSize="15" Foreground="#FFDA2828"	HorizontalAlignment="Left"	VerticalAlignment="Top" Margin="141,214.766,0,0" Height="30" Width="104" Grid.Row="1"/>
         <Label	x:Name="L3"	Content="ID:	"	FontSize="15"	FontWeight="Bold" Background="Bisque"	HorizontalAlignment="Left"	VerticalAlignment="Top"	 Margin="305,214.766,0,0" Height="30" Width="34" Grid.Row="1"/>

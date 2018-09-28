@@ -76,15 +76,16 @@ namespace Ejemplo_PlantillaSkeleton
         Monstruos  obAfraidRed1, obAfraidWhite1,obAfraidYellow1, obAfraidRed2, obAfraidWhite2, obAfraidYellow2;
         Random rnd = new Random();
         int monster = 1;
-        SoundPlayer monsterScream; 
+        SoundPlayer monsterScream;
+        SoundPlayer gameOverScream; 
     
         public MainWindow()
         {
             InitializeComponent();
 
             
-            monsterScream = new SoundPlayer(@"C:\Users\eduar_000\Desktop\Apps\Dunkelheit\Sounds\Monster.wav");
-
+            monsterScream = new SoundPlayer(@"C:\Users/paez7/Desktop/Dunkelheit/Sounds/Monster.wav");
+            gameOverScream = new SoundPlayer(@"C:\Users/paez7/Desktop/Dunkelheit/Sounds/GameOver.wav");
           
     
             // Enfocar el Canvas
@@ -522,10 +523,17 @@ namespace Ejemplo_PlantillaSkeleton
         private void checarsize(Monstruos monstruo)
         {
 
-            if (monstruo.iSize>11)
+            if (monstruo.iSize > 11)
             {
                 gameover.Visibility = Visibility.Visible;
+                gameOverScream.Play();
+                monster = 7;
+                obAfraidRed1.activo = false;
+                obAfraidWhite1.activo = false;
+                obAfraidWhite2.activo = false;
+                obAfraidYellow1.activo = false; 
             }
+            
         }
 
 
